@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head>
+  
+  <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1"><title>Collaborative Planning Analytics: Executive Summary</title>
+  
+  <style type="text/css"><!-- body { background-color: #ffffff } --></style></head><body>
+<div align="center">
+  <!--#include file="title.html" -->
+</div>
+<div align="right">
+  <!--#include file="signature.html" -->
+</div>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;This dissertation investigates the possibility of building a &#8220;web&#8221; 
+  of spatial data and geoprocessing services to support distributed and collaborative 
+  urban planning analytics. The focal point of this work is research in two areas: 
+  the systems needed for Web-based geoprocessing services, and the formal language 
+  that must be written to facilitate collaborative processing of analytic models 
+  between computers. To be successful, the systems under study require a new information 
+  infrastructure framework to be in place. This framework is the subject of other 
+  research efforts, which are detailed and discussed in relationship to this work.</p> 
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;This work takes as a starting point the leading research 
+  on Web services software paradigms such as XML, SOAP and WSDL<a href="#ref1">*</a> 
+  vocabularies, and the newly emerging work on connecting the Web services 
+  of disparate organizations (via languages that describe the formal interactions 
+  that must take place between systems to conduct transactions<a href="#ref2">&#8224;</a>). 
+  This research is mainly geared towards enabling new forms of vertical integration 
+  and electronic commerce. While groups like the OpenGIS Consortium have taken 
+  a leading role in catalyzing research into geospatial Web services, the specific 
+  implications and appropriateness for urban planning have yet to be investigated. 
+</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;While the goal of this project is to build models that can be shared and re-used, 
+  there is a great deal of supporting infrastructure that must be in place in 
+  order to enable Web-based modeling. This is best explained by way of example. 
+  Say that County A has a development suitability model that is working well. 
+  County B wants to use the model for its building permitting process, and the 
+  state wants to use the model as one input into a regional 
+  growth model. A key aspect of development suitability models involves finding 
+  soils that can support houses and avoiding terrain that is too steep for building. 
+  County B can get the model from County A, but if County B calls their soils 
+  by different names than County A, the model will not run. Furthermore, the state 
+  may be able to get the model and gather soils data from all the counties, but 
+  they all must use the same naming scheme for their soils for the analysis to 
+  get anywhere. This issue becomes even more acute when the state tries to deal 
+  with data collected on a local level, such as zoning. Currently it is not common 
+  for towns to have the same zoning classifications, much less use the same codes 
+  to describe the zones. The creation of a unified data schema for land records 
+  is required solve this problem. Work in this area is underway and can be leveraged 
+  in this project.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Another problem is keeping the data up to date. One of the largest costs in 
+  typical modeling work is getting data into the system. If the data import process 
+  must occur every time the data changes, the system is far less useful that it 
+  otherwise could be. The obvious solution is to access the data over a network 
+  from the place of creation, but that is a simplistic, technical response that 
+  doesn&#8217;t take into account the diversity of technical sophistication in 
+  government, and levels of trust that must be in place for organizations to share 
+  their data over a network, and just as importantly, for analysts to rely on 
+  the data to be available when needed. A significant part of this research is 
+  to classify governmental institutions based on their spatial data needs and 
+  technical sophistication, enabling us to specify software systems that can be 
+  successfully implemented. It is important to note that there is a large role 
+  in the framework proposed here for the private sector. While this research is 
+  not a business case for commercial data providers, some attention is paid to 
+  pairing roles with the institution motivated to fulfill the role reliably and 
+  well. </p>
+
+<i>December, 2002</i>
+<hr>
+<p><a name="ref1">* XML: Extensible Markup Language; SOAP: Simple Object Access Protocol; WSDL: 
+  Web Services Description Language.</p>
+  
+<p><a name="ref2">&#8224; Most notable is IBM&#8217;s Business Process Extraction Language.</p>
+</body></html>

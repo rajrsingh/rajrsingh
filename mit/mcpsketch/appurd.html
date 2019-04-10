@@ -1,0 +1,227 @@
+<html><title>Urban Redevelopment</title><body bgcolor=#ffffff>
+<h3>IV. An Application to Urban Redevelopment</h3>
+A concept of how an urban design GIS might work to help build a descriptive
+model of the city has now been presented. The question of what this means to
+the formation of policy and design interventions has not been addressed
+intentionally because those questions are beyond the scope of this model. As
+mentioned in the literature review of environmental modeling, I feel that too
+often models are constructed as decision making tools instead of decision
+support tools. The actual decisions must be made by the individual planner or
+planning agency, and any attempt by the GIS to guide the final decision is
+risky, as it may lead to a narrowing of possible options too early. This
+section will look at a current redevelopment proposal for a public housing
+project and describe what can be learned about the housing development using
+the model that has just been built.<p>
+
+<h4>Redevelopment Objectives</h4>
+The objectives of the design guidelines are:<p><ol>
+<li>Build a minimum of 535 public housing units within a larger <b>mixed income
+community</b>. These units must be built to a high standard of quality and
+designed to current standards for family housing.
+<li>Reorganize the site to create a typical urban family housing
+neighborhood,<b> one which cannot be readily recognized as "public
+"housing"</b>, one in which <b>design promotes sustainable safety</b>, and one
+which is <b>integrated into the urban fabric</b> surrounding it.
+<li>To the largest extent possible, this redevelopment must <b>address edge
+conditions</b> around the site which could compromise or threaten the long term
+viability of the new community.
+<li>Maximize this unique opportunity to <b>coordinate the efforts and resources
+of different city departments and non-profit agencies</b> including, but not
+limited to the BHA, MMTTF, BRA, Public Facilities Department ("PFD"), Police
+Department ("BPD"), Parks and Recreation Department, Community Centers, School
+Department, Department of Public Works, Transportation Department, Public
+Library, MBTA, the Mission Church, Medical Academic and Scientific Community
+Organization ("MASCO"), Wentworth Institute and numerous additional social
+service providers.<p></ol>
+(emphasis added)<br><i>Request for Development Proposals</i><a href="/rajsingh/www/mcpsketch/footnotes.html#fn20">[20]</a><p>
+
+The design guidelines are presented here by the owner, the Boston Housing
+Authority (BHA), to prospective developers. Although they are for a specific
+housing project, they reflect the current thinking in how to make public
+housing work. Major design issues center around supporting mixed incomes,
+making appearance similar to private housing, and encouraging safety through
+design (this concept has been put forth by Jane Jacobs as "eyes on the
+street"<a href="/rajsingh/www/mcpsketch/footnotes.html#fn21">[21]</a>). 
+
+<h4>Site analysis</h4>
+<h5>Design objective one</h5>
+Here the BHA requests that a large number of public housing units coexist with
+market rate units. Since public housing is only made available to very low
+income families, this means that people with incomes that allow them to
+purchase market rate housing will live next to people who have almost no
+income. Incomes are detailed in census data, but the lowest level of
+aggregation is the block group, which covers at least a few city blocks. A unit
+by unit analysis is therefore not possible with census data. The parcel
+database affords a better resolution for analysis, but the only data available
+is land use, land value and building value. An analysis can be attempted by
+looking at residential building values and finding places where a wide range of
+values are near each other (Figure 24), but building value is still a poor
+surrogate for income, which is the stated criteria.<p>
+Ideally, the urban design GIS could offer the planner insight into creating
+mixed communities with the pattern finding application if unit by unit income
+data were available. One procedure would be to find neighborhoods in which the
+desired range of incomes were present. The planner could also specify what
+percentage of the community should fall within certain income sub-ranges. After
+places that met the criteria were identified, other household characteristics
+could be studied such as rent, education, place of birth, length of occupancy,
+building age, parking, distance from public transportation, etc. to further
+develop an understanding of the composition of a viable mixed income community.
+As mentioned, this analysis can not be performed well given the current level
+of detail in census data, but it may be redundant anyway, as the fulfillment of
+objective two may be the catalyst for the fulfillment of objective one.
+
+<h5>Design objective two</h5>
+The main thrust of this objective is to create a development in which urban
+form and demographic characteristics blend into the larger community (the
+safety objective will not be addressed here because safety-related information
+is not part of the database). Most public housing projects currently follow the
+design ideology in fashion during their construction in the 1960s and 1970s.
+They are developments consisting of large, tall, unornamented, multi-family
+buildings with a great deal of public open space around them. Organic
+neighborhoods in Boston are townhouses with back alleys that can be used for
+parking or gardens and fa&ccedil;ades that come right up to the sidewalk, with
+a small zone for a stoop and landscaping. Units face streets, which are used by
+the general public. The streets are narrow, which slows down vehicular traffic
+and makes the street safer for pedestrians. Most residential buildings are
+three to four stories tall with none being higher than four and one half
+stories.<p>
+Understanding the difference in urban form is straightforward. Simple visual
+observation shows a marked difference in building form in plan (Figure 25) and
+in perspective (Figure 26) between public housing developments and
+neighborhoods that have formed organically. The planned developments are the
+antithesis of the organic ones. Residences rarely face the street and public
+areas relate to the entire development instead of to any one residence. There
+are few streets in the developments (Figure 27), so no one passes through
+except people connected to them. South of Mission Main, organic development
+takes a less dense form as we move away from the city center. There are many
+neighborhoods of single family homes of one and two stories along with
+triple-deckers.<p>
+Although visual analysis works well here to identify the difference in urban
+form, an urban design GIS should be able to quantify and operationalize this
+difference so that the designer gains a another understanding of the difference
+and so that their methods can be applied over larger areas. The difference in
+building form might be quantified using an area to perimeter ratio (area /
+perimeter). The mean of this ratio is twenty-eight for the group of
+institutional buildings to the northwest of Mission Main, nine for the
+residential area to the southwest of the development and twelve for the
+development itself. At first glance, this seems to suggest that a lower
+building to area ratio would better match the neighborhood, but once again,
+scale, resolution and the richness of the data set are important because a
+townhouse can have the same general shape as a public housing tenement, with
+the major differences being in the architectural detail, building quality,
+upkeep, number of units and location.<p>
+Contrasting the relationship of streets is more straightforward. The public
+housing developments rarely have streets in them, and when they do, these
+streets often dead end in the development. Organic neighborhoods contain more
+streets and they usually culminate in intersections instead of dead ends.<p>
+Small nodes seem to be another characteristic of organic neighborhoods, like
+the BCA node in the South End, but they are absent from the immediate Mission
+Main area. Two minor nodes can be found south and west of the development, but
+these are associated with other neighborhoods (Figure 27). If the "home zone"
+of Mission Main residents could be expanded to include this area, this might
+not be a concern, but as it is, residents only seem to consider the development
+as familiar territory.<a href="/rajsingh/www/mcpsketch/footnotes.html#fn22">[22]</a><p>
+So three conditions have been identified whose spatial characteristics differ
+markedly in planned neighborhoods versus organic ones, building form, streets
+and nodes. Many others probably exist and each designer should be able to use
+the GIS to develop and quantify their own individual ideas.
+
+<h5>Design objective three</h5>
+Objective three addresses edge conditions. This will be a difficult task as
+land use data shows that the development is bordered mostly by non-residential
+uses, except to the south (Figure 28). The development is surrounded by
+colleges, hospitals, and their associated parking lots. This makes it hard to
+create a neighborhood environment as there are few existing neighborhoods with
+which to integrate. Street data shows that the site is also cut off from
+neighborhoods to the east by a wide transportation corridor. <p>
+A designer might begin to look at solving this "wicked" design problem<a
+href="/rajsingh/www/mcpsketch/footnotes.html#fn23">[23]</a> with the tools and methodology developed
+earlier. Nodes address the problem of the edge between residential and more
+public areas well, so here is one way in which the edge condition might be
+addressed. For argument's sake, we begin with the assumption that the designer
+feels that it is important to create a node in the Mission Main neighborhood.
+There are presently no nodes in the area because land uses are largely limited
+to institutional buildings, their associated parking lots and public housing.
+The designer might explore the possibility  of creating a node by inserting
+commercial, recreational and mixed uses in certain areas of the neighborhood,
+most likely addressing the edge condition by placing these uses on the northern
+and western edges of Mission Main (commercial establishments could attract the
+business of workers in the institutional areas). <p>
+By doing this in the GIS and running the node algorithm, a relatively objective
+judgment regarding the likely success of the design intervention can be
+generated. With these new land uses in place, the planner can say that given
+the development of certain areas in the manner described, a certain size node
+will be created. Other nodes of this size look like place X, place Y and place
+Z. There are a lot of assumptions in this scenario. Most significantly, the
+node finding algorithm must be accurate and nodes of certain sizes must be
+comparable, but at least a design methodology has been created which can be
+challenged, debated and refined, instead of a design proposal which seems to
+coalesce in the mind of the designer.
+
+<h5>Design objective four</h5>
+Objective four is to coordinate the activities of all government and private
+agencies that are working with Mission Main. I included the list of the
+agencies who would need to be involved to illustrate what a difficult task this
+would be. In order to accomplish this goal using traditional techniques,
+meetings would be needed with all of these agencies on a periodic basis. In
+practice, the coordination of activities is a rare event. This would probably
+require a great portion of someone from each agency's time every month, and
+then this person would still have to disseminate the information to the rest of
+the agency. The knowledge sharing functionality described in the previous
+section (III. Functional Prototype: Information Sharing) is perfectly suited to
+address this issue. This functionality was described as it would apply to the
+situation of a planner organizing input from the general public, but as
+agencies are only a subset of the general public, the theory is still the
+same.<p>
+The benefits of using GIS to address this objective are numerous. Everyone in
+each agency would have immediate access to everyone else's latest updates to
+the database, the need for time and effort-consuming face-to-face meetings
+would be reduced, and all the information would be accessible on any desktop
+with a computer and a network connection. In addition to these efficiency
+issues, sharing information in this way allows the designer to integrate
+everyone's information into analyses of the kinds described above. Using this
+system, more information is likely to be considered as part of the project, and
+the actions of agencies is more likely to coordinated.<p>
+
+<h4>Policy and design implications</h4>
+In order to complete the picture of how these tools might be used, here are a
+few insights that the above study would support. This cursory site analysis
+leads to a few definite recommendations. First of all, in order to attract a
+mixed income clientele, Mission Main buildings should look similar to
+townhouses in the downtown area. It was mentioned that there is also a
+precedent for a less dense pattern of single family homes and triple-deckers.
+Although the argument could be made that the site is outside of the downtown
+area and therefore more similar to less urban parts of Boston, following this
+example would make it difficult to accommodate the required number of units on
+the site.<p>
+It will be difficult to integrate the development into the larger community
+because the site is largely isolated from other residential neighborhoods. Any
+efforts in this area should focus on connecting Mission Main to areas south of
+the development, the only direction which offers an opportunity for connection
+to a larger neighborhood. As the non-residential areas surrounding the
+development consist of major institutions (hospitals and colleges), there is
+little that can be done towards addressing edge conditions by changing the
+physical form of these places. It would make more sense to emphasize that edge
+and focus energy on connecting the development to southern and western
+neighborhood areas.<p>
+
+<b>Figure 24: Identifying "Mixed" Communities</b><br>
+<img src=/rajsingh/www/mcpsketch/bldgval.gif><p>
+<b>Figure 25: Urban Form in Plan View<br>Free Market vs. Public Housing
+(arrows point to public housing)<br></b>
+<img src=/rajsingh/www/mcpsketch/bldgmix.gif><p>
+<b>Figure 26: Urban Form In Perspective View<br>Free Market vs. Public
+Housing<br></b>
+<i>(a) 1960s/1970s-era public housing (Orchard Park)</i><br>
+<img src=/rajsingh/www/mcpsketch/slide19.gif><p>
+<i>(b) A highly desirable pre-World War II-era high density free market
+neighborhood (South End)</i><br>
+<img src=/rajsingh/www/mcpsketch/slide3.gif><p>
+
+<b>Figure 27: Nodes around Mission Main<br></b>
+<img src=/rajsingh/www/mcpsketch/mmnodes.gif>
+<b>Figure 28: Land Use around Mission Main<br></b>
+<img src=/rajsingh/www/mcpsketch/mmlu.gif>
+<hr>
+<a href="/rajsingh/www/mcpsketch/conclusion.html">Next section (Conclusion)</a>
+</html>

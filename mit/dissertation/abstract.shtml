@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head>
+  <title>Collaborative Planning Analytics: abstract</title>
+  <style type="text/css"><!-- body { background-color: #ffffff } --></style>
+</head>
+
+<body>
+<div align="center">
+  <!--#include file="title.html" -->
+</div>
+<div align="right">
+  <!--#include file="signature.html" -->
+</div>
+
+<p>Urban planning is inherently a multi-disciplinary pursuit. There is no one
+person or agency that can do it well. In order to steward our natural
+resources, economic future, and quality of life we draw upon the
+expertise of many fields. This has its advantages, but it makes the
+synthesis of analyses difficult, and leaves little ability for
+decision-makers to try out different scenarios or change the underlying
+assumptions to account for new information. </p>
+
+<p>This research presents a framework for a new paradigm of modeling and
+information infrastructure based on new and emerging Internet
+technologies. The system achieves four goals:<br>
+
+<ul>
+
+  <li>Analytic models are made more visible and changeable.</li>
+  <li>Models from different groups can interact and be the basis of more holistic research.</li>
+  <li>System creation and maintenance are less costly than is now the norm.</li>
+  <li>Less well-funded and sophisticated organizations, such as small
+towns and community organizations, are able to participate in the
+system.</li>
+</ul></p>
+
+<p>Particular attention is paid to how the quality and quantity of
+analysis can increase exponentially in this environment, and how the
+nature and use of analyses will evolve.&nbsp; A prototype system is
+designed and built around the process of zoning and master planning
+that all municipalities go through on an ongoing basis.</p>
+
+</body></html>

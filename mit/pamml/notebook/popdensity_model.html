@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>PAMML Model Design: modeling population density</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="../../global.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<h3>PAMML Model Design </h3>
+<h2>Example problem: Modeling population density</h2>
+<p>Task Outline</p>
+<ul>
+  <li>Acquire Census block group data</li>
+  <li>Identify area and total population variables</li>
+  <li>Calculate population density (area / total population)</li>
+  <li>Aggregate density measurements into quintiles (5 data groupings with an 
+    equal number of members in each)
+  </li>
+</ul>
+<table width="50" border="0" cellpadding="4" cellspacing="2" bordercolor="#CCCC99" bgcolor="#cccc99">
+  <tr> 
+    <td bgcolor="#CCCC99"> <b>traditional flow diagram</b></td>
+  </tr>
+  <tr> 
+    <td><img src="graphics/popdensity_simple.png" width="453" height="91" border="0" /></td>
+  </tr>
+</table>
+<br />
+<table width="50" border="0" cellpadding="4" cellspacing="2" bordercolor="#cccc99" bgcolor="#cccc99">
+  <tr> 
+    <td bgcolor="cccc99"> <b>hierarchical diagram based on the cascading application 
+      of design patterns</b></td>
+    <td bgcolor="cccc99">&nbsp;</td>
+    <td bgcolor="cccc99"> <b>abstract design pattern for the population density 
+      modeling problem</b></td>
+  </tr>
+  <tr> 
+    <td><img src="graphics/popdensity_simple_dp.png" width="244" height="243" border="0" /></td>
+    <td>&nbsp; </td>
+    <td> <img src="graphics/intensity_dp.png" width="244" height="244" border="0" /></td>
+  </tr>
+</table>
+<br />
+<table width="50" border="0" cellpadding="4" cellspacing="2" bordercolor="#CCCC99" bgcolor="#cccc99">
+  <tr> 
+    <td bgcolor="#CCCC99"> <b>PAMML instantiation (<a href="../../xml/schemas/pamml/pamml.xsd">full 
+      XML Schema here</a>)</b></td>
+  </tr>
+  <tr> 
+    <td>
+      <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br />&lt;VectorDataModel  <br />		xsi:type=&quot;VectorQuantile&quot; <br />		xmlns=&quot;http://web.mit.edu/rajsingh/www/xml/ns/pamml&quot; <br />		xsi:schemaLocation=&quot;http://web.mit.edu/rajsingh/www/xml/ns/pamml file:///Users/rajsingh/projects/pamml/schema/pamml.xsd&quot; <br />		xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; <br />		srsName=&quot;EPSG:26986&quot; <br />		name=&quot;Basic Population Density by quintile&quot; <br />		useFeatureType=&quot;popdensity&quot; <br />		numRanges=&quot;5&quot;&gt;<br />	&lt;Metadata&gt;<br />		&lt;Description&gt;Classified population density of Cambridge, MA based on Census 2000&lt;/Description&gt;<br />	&lt;/Metadata&gt;<br />	&lt;Permissions user=&quot;rwxa&quot; group=&quot;ruxa&quot; other=&quot;ruxa&quot;/&gt;<br />	&lt;AttributeInfo&gt;<br />		&lt;Attribute name=&quot;popdensityquintile&quot; dataType=&quot;xs:decimal&quot;/&gt;<br />		&lt;Attribute name=&quot;uniqueid&quot; dataType=&quot;xs:int&quot;/&gt;<br />	&lt;/AttributeInfo&gt;<br />	&lt;BaseVector xsi:type=&quot;InternalVector&quot; name=&quot;censusdata&quot; srsName=&quot;EPSG:26986&quot;&gt;<br />		&lt;RemoteInfo modelLoc=&quot;file:///./cambma_popdensity.xml&quot;/&gt;<br />	&lt;/BaseVector&gt;<br />&lt;/VectorDataModel&gt;</pre>
+    </td>
+  </tr>
+</table>
+<br />
+</body>
+</html>

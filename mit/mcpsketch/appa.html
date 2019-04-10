@@ -1,0 +1,240 @@
+<html><title>Scripts</title><body bgcolor=#ffffff>
+<h3>Appendix A: Scripts written for this project</h3>
+<pre>
+The following scripts were written in Avenue, the scripting language of ArcView
+version 2 (Environmental Systems Research Institute, Redlands, CA). To install
+these pattern finding applications, copy these five scripts into your project
+and create two new buttons in the View button bar called `Find Same' and `Blind
+Pattern.' Select `View.FindSame.ave' as the script for the `Find Same' button
+and `View.FindSameUpdate.ave' as the update script for the button. Select
+`View.BlindPattern.ave' as the script for the `Blind Pattern' button. These
+names may be shortened for a DOS-based operating system.<p>
+'********************************************************************<p>
+'View.BlindPattern.ave<p>
+'Raj Singh, 1996<p>
+<p>
+theView = av.GetActiveDoc<p>
+theThemeList = theView.GetThemes<p>
+dontstop = true<p>
+usedThemeList = List.Make<p>
+<p>
+while (dontstop = true)<p>
+  'Have the user choose a theme<p>
+  themeChoice = MsgBox.Choice (theThemeList,"Select a theme of interest","Theme
+Select (Cancel when done)")<p>
+  usedThemeList = usedThemeList.Add(themeChoice)<p>
+    'if the user hits cancel, then they are done and we send<p>
+    'the list of used themes to the calling script<p>
+    if (themeChoice = nil) then<p>
+      dontstop = false<p>
+      returnVal = av.Run ("FS.IntersectThemes",usedThemeList)<p>
+      exit<p>
+    end<p>
+<p>
+  'Have the user choose a field from the chosen theme<p>
+  themeChoiceFTab = themeChoice.GetFTab<p>
+  themeChoiceFieldList = themeChoiceFTab.GetFields<p>
+  themeChoiceName = themeChoice.GetName<p>
+<p>
+  titleName = themeChoiceName+" Attribute Selection"<p>
+  fieldChoice = MsgBox.Choice (themeChoiceFieldList, "Select a field of
+interest",titleName)<p>
+  if (fieldChoice = nil) then<p>
+    MsgBox.Error("No field chosen","")<p>
+    exit<p>
+  end<p>
+<p>
+  'get summary info, so far mean, maximum, minimum<p>
+  fieldsum = 0<p>
+  fieldmin = 0<p>
+  fieldmax = 0<p>
+  for each recno in themeChoiceFTab<p>
+    fieldVal = themeChoiceFTab.ReturnValue(fieldChoice,recno)<p>
+    if ( fieldVal &gt;= 0 ) then<p>
+      fieldsum = fieldsum + fieldVal<p>
+    end<p>
+    if ( fieldVal &lt; fieldmin ) then<p>
+      fieldmin = fieldVal<p>
+    end<p>
+    if ( fieldVal &gt; fieldmax ) then<p>
+      fieldmax = fieldVal<p>
+    end<p>
+  end<p>
+  numrecs = themeChoiceFTab.GetNumRecords<p>
+  fieldmean = fieldsum / numrecs<p>
+  <p>
+  statString = "MAX="+fieldmax.AsString+" MEAN="+fieldmean.AsString+"
+MIN="+fieldmin.AsString<p>
+<p>
+  'shows the user min &amp; max and asks for user min &amp; max<p>
+  minString = fieldChoice.GetAlias+" statistics: "+statString+"."+"What is the
+MINIMUM value you are interested in?"<p>
+  maxString = fieldChoice.GetAlias+" statistics: "+statString+"."+"What is the
+MAXIMUM value you are interested in?"<p>
+  minVal = MsgBox.Input(minString,"Minimum Value",fieldmean.AsString)<p>
+  maxVal = MsgBox.Input(maxString,"Maximum Value",fieldmean.AsString)<p>
+<p>
+  'select all the objects that meet the requirements<p>
+  queryStringy = "(["+fieldchoice.GetAlias+"]&gt;="+minVal+") and
+(["+fieldChoice.GetAlias+"]&lt;="+maxVal+")"<p>
+  isOK =
+themeChoiceFTab.Query(queryStringy,themeChoiceFTab.GetSelection,#VTAB_SELTYPE_NE)<p>
+  themeChoiceFTab.UpdateSelection<p>
+  av.GetProject.SetModified(true)<p>
+end 'while<p>
+<p>
+returnVal = av.Run ("FS.IntersectThemes",usedThemeList)<p>
+<p>
+'********************************************************************<p>
+'View.FindSame.ave<p>
+'Raj Singh, 1996<p>
+'This script finds the values of the selected fields of selected  <p>
+'themes which underly the selected polygon. Then based on those <p>
+'values, the user can expand their range a bit and find all other<p>
+'areas on the map that fall within the range of values chosen for the <p>
+'selected themes.<p>
+'<p>
+'the update script should make sure only one theme is active and<p>
+'only one polygon is selected when this script is called<p>
+theView = av.GetActiveDoc<p>
+theObjectTheme = av.GetActiveDoc.GetActiveThemes.Get(0)<p>
+theFTab = av.GetActiveDoc.GetActiveThemes.Get(0).GetFTab<p>
+themeFieldList = List.Make<p>
+theThemeList = theView.GetThemes<p>
+themeFieldList = themeFieldList.Empty<p>
+<p>
+usedThemeList = av.Run ("FS.SelectThemes","")<p>
+<p>
+usedCount = usedThemeList.Count<p>
+<p>
+returnVal = av.Run ("FS.IntersectThemes",usedThemeList)<p>
+<a name="_Ref355105238"><p>
+'********************************************************************<p>
+'FS.SelectThemes<p>
+'Raj Singh, 1996<p>
+'select objects from themes of interest<p>
+<p>
+theView = av.GetActiveDoc<p>
+theObjectTheme = theView.GetActiveThemes.Get(0)<p>
+theThemeList = theView.GetThemes<p>
+dontstop = true<p>
+usedThemeList = List.Make<p>
+<p>
+while (dontstop = true)<p>
+  'Have the user choose a theme<p>
+  themeChoice = MsgBox.Choice (theThemeList,"Select a theme of interest or
+Cancel to quit","External Theme Select")<p>
+  usedThemeList = usedThemeList.Add(themeChoice)<p>
+    'if the user hits cancel, then they are done and we send<p>
+    'the list of used themes to the calling script<p>
+    if (themeChoice = nil) then<p>
+      dontstop = false<p>
+      return usedThemeList<p>
+    end<p>
+<p>
+  themeChoiceFTab = themeChoice.GetFTab<p>
+  themeChoiceFieldList = themeChoiceFTab.GetFields<p>
+  themeChoiceName = themeChoice.GetName<p>
+  'Select the record of interest in this theme <p>
+  themeChoice.SelectByTheme(theObjectTheme, #FTAB_RELTYPE_INTERSECTS, 0,
+#VTAB_SELTYPE_NEW)<p>
+  av.GetProject.SetModified(true)<p>
+<p>
+  if (themeChoiceFTab.GetSelection.Count = 0) then<p>
+    MsgBox.Error("The themes do not intersect","")<p>
+    exit<p>
+  end<p>
+<p>
+  'Have the user choose a field from the chosen theme<p>
+  titleName = themeChoiceName+" Attribute Selection"<p>
+  fieldChoice = MsgBox.Choice (themeChoiceFieldList, "Select a field of
+interest",titleName)<p>
+  if (fieldChoice = nil) then<p>
+    MsgBox.Error("No field chosen","")<p>
+    exit<p>
+  end<p>
+<p>
+  'gets the value for the chosen field &amp; record<p>
+  for each recno in themeChoiceFTab.GetSelection<p>
+    fieldVal = themeChoiceFTab.ReturnValue(fieldChoice,recno) 'only one object
+selected, so only one record<p>
+  end<p>
+<p>
+  'shows the user min &amp; max and asks for user min &amp; max<p>
+  minString = fieldChoice.GetAlias+" equals "+fieldVal.AsString+" at the
+location of the object. What is the MINIMUM value you are interested in?"<p>
+  maxString = fieldChoice.GetAlias+" equals "+fieldVal.AsString+" at the
+location of the object. What is the MAXIMUM value you are interested in?"<p>
+  minVal = MsgBox.Input(minString,"Minimum Value",fieldVal.AsString)<p>
+  maxVal = MsgBox.Input(maxString,"Maximum Value",fieldVal.AsString)<p>
+<p>
+  'select all the objects that meet the requirements<p>
+  queryStringy = "(["+fieldchoice.GetAlias+"]&gt;="+minVal+") and
+(["+fieldChoice.GetAlias+"]&lt;="+maxVal+")"<p>
+  isOK =
+themeChoiceFTab.Query(queryStringy,themeChoiceFTab.GetSelection,#VTAB_SELTYPE_NE)<p>
+  themeChoiceFTab.UpdateSelection<p>
+  av.GetProject.SetModified(true)<p>
+end 'while<p>
+<p>
+return usedThemeList<p>
+<p>
+<p>
+'********************************************************************<p>
+'View.FindSameUpdate.ave<p>
+'Raj Singh, 1996<p>
+<p>
+SELF.SetEnabled(false)<p>
+<p>
+theView = av.GetActiveDoc<p>
+activeList = theView.GetActiveThemes<p>
+<p>
+if (activeList.Count = 1) then<p>
+  searchTheme = activeList.Get(0).GetFTab<p>
+  if (searchTheme.GetSelection.Count &gt; 0) then<p>
+    SELF.SetEnabled(true)<p>
+  end<p>
+end<p>
+<a name="_Ref355471833"><p>
+'********************************************************************<p>
+'FS.IntersectThemes<p>
+'Raj Singh, 1996<p>
+'intersects selected objects in the used theme list<p>
+<p>
+theView = av.GetActiveDoc<p>
+usedThemeList = SELF.AsList<p>
+usedCount = usedThemeList.Count<p>
+theTheme = usedThemeList.Get(0)<p>
+lastItem = usedCount - 1<p>
+usedThemeList.Remove(lastItem)<p>
+i = 1<p>
+<p>
+while (i &lt;= (lastItem - 1))<p>
+  selectTheme = usedThemeList.Get(i)<p>
+  theTheme.SelectByTheme(selectTheme,
+#FTAB_RELTYPE_INTERSECTS,0,#VTAB_SELTYPE_AND)<p>
+  av.GetProject.SetModified(true)<p>
+  i = i + 1<p>
+end 'while<p>
+<p>
+if (File.Exists("xxselect.shp".AsFileName)) then<p>
+  File.Delete("xxselect.shp".AsFileName)<p>
+end<p>
+if (theView.FindTheme("xxselect.shp") &lt;&gt; nil) then<p>
+  theView.DeleteTheme(theView.FindTheme("xxselect.shp"))<p>
+end<p>
+<p>
+newFTab = theTheme.GetFTab.Export("xxselect.shp".AsFileName, Shape,true)<p>
+theSrcName = SrcName.Make ("xxselect.shp")<p>
+if (theSrcName = nil) then<p>
+  MsgBox.Error("invalid SrcName","")<p>
+  exit<p>
+end<p>
+newTheme = Theme.Make(theSrcName)<p>
+newTheme.SetVisible(true)<p>
+theView.AddTheme(newTheme)<p>
+av.GetProject.SetModified(true)
+</pre>
+<hr>
+<a href="/rajsingh/www/mcpsketch/appb.html">Next section (Appendix B)</a>
+</html>
